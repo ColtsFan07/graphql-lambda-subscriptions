@@ -29,7 +29,7 @@ export const getFilteredSubs = async ({ server, event }: { server: Omit<ServerCl
     filterExpressions.push(`(#filter.#${aliasNumber} = :${aliasNumber} OR attribute_not_exists(#filter.#${aliasNumber}))`)
   }
 
-  server.log('getFilteredSubs', { event, expressionAttributeNames, expressionAttributeValues, filterExpressions })
+  console.log('getFilteredSubs', { event, expressionAttributeNames, expressionAttributeValues, filterExpressions })
 
   const iterator = server.models.subscription.query({
     IndexName: 'TopicIndex',
@@ -45,7 +45,7 @@ export const getFilteredSubs = async ({ server, event }: { server: Omit<ServerCl
     KeyConditionExpression: '#hashKey = :hashKey',
     FilterExpression: filterExpressions.join(' AND ') || undefined,
   })
-
+  console.log('iterator', iterator)
   return await collect(iterator)
 }
 
