@@ -2,7 +2,7 @@
 
 var graphql = require('graphql');
 var awsSdk = require('aws-sdk');
-var getHomeDirectory = require('#home-directory');
+// var getHomeDirectory = require('#home-directory');
 var execute = require('graphql/execution/execute');
 var values = require('graphql/execution/values');
 var streamingIterables = require('streaming-iterables');
